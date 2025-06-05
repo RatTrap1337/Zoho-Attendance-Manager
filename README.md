@@ -1,73 +1,116 @@
 # Zoho Attendance Manager
 
-Automated Zoho attendance check-in/check-out system with Docker support and configurable cron scheduling.
+> ⚠️ **EDUCATIONAL PURPOSE ONLY** - This project is created solely for learning and educational purposes. **NOT for production use.** Please read the [DISCLAIMER](DISCLAIMER.md) before proceeding.
 
-## Features
+Educational demonstration of automated Zoho People attendance API integration with Docker support and configurable cron scheduling.
 
-- 🔐 Secure OAuth token management
-- ⏰ Configurable cron job scheduling
-- 🐳 Docker containerized deployment
-- 🌍 Timezone support
-- 📝 Comprehensive logging
-- 🔄 Automatic token refresh
+## 🎓 Educational Purpose
 
-## Quick Start
+This project serves as a **learning resource** for:
+- OAuth 2.0 authentication flow implementation
+- RESTful API integration with error handling
+- Docker containerization and multi-stage builds
+- Environment variable management and security
+- Cron job scheduling and automation concepts
+- Node.js best practices and async/await patterns
 
-### 1. Setup Environment
+## ⚠️ Important Notice
+
+**Please read the [DISCLAIMER](DISCLAIMER.md) for critical information about:**
+- Why this is educational only and never for production
+- Serious legal, ethical, and professional consequences
+- Security, compliance, and reliability concerns
+- Proper educational usage guidelines
+- Alternative learning approaches
+
+## ✨ Learning Features
+
+- 🔐 **OAuth 2.0 Implementation**: Learn secure token management and refresh flows
+- ⏰ **Cron Job Automation**: Understand scheduling and task automation concepts
+- 🐳 **Docker Best Practices**: Multi-stage builds, security, and containerization
+- 🌍 **Environment Configuration**: Secure credential management patterns
+- 📝 **API Integration**: REST API patterns and error handling strategies
+- 🔄 **Token Lifecycle**: Automatic refresh and storage mechanisms
+
+## 📖 Educational Setup
+
+**For learning and development purposes only:**
+
+### 1. Setup Environment (Development Only)
 
 ```bash
-# Clone or create project directory
-mkdir zoho-attendance && cd zoho-attendance
+# Clone for educational study
+git clone [repository-url]
+cd zoho-attendance
 
-# Copy the .env.example to .env and fill in your credentials
+# Copy the educational environment template
 cp .env.example .env
 ```
 
-Edit `.env` file with your Zoho credentials:
+**Important**: Only use test/development Zoho accounts, never production accounts.
+
+Edit `.env` file with **test credentials only**:
 ```bash
-ZOHO_CLIENT_ID=your_actual_client_id
-ZOHO_CLIENT_SECRET=your_actual_client_secret  
-ZOHO_REFRESH_TOKEN=your_actual_refresh_token
+# Use ONLY test/development Zoho credentials
+ZOHO_CLIENT_ID=your_test_client_id
+ZOHO_CLIENT_SECRET=your_test_client_secret  
+ZOHO_REFRESH_TOKEN=your_test_refresh_token
 ```
 
-### 2. Docker Deployment
+### 2. Educational Docker Deployment
 
 ```bash
-# Build and run with docker-compose
+# Study the Docker build process
 docker-compose up -d
 
-# Or build and run manually
-docker build -t zoho-attendance .
-docker run -d --name zoho-attendance --env-file .env zoho-attendance
+# Or examine manual Docker usage
+docker build -t zoho-attendance-edu .
+docker run -d --name zoho-attendance-edu --env-file .env zoho-attendance-edu
 ```
 
-### 3. Local Development
+### 3. Educational Local Development
 
 ```bash
-# Install dependencies
+# Learn about dependency management
 npm install
 
-# Start the scheduler
+# Study the cron scheduler implementation
 npm start
 
-# Test manually
+# Examine manual API testing (development only)
 npm run test-checkin
 npm run test-checkout
 ```
 
-## Configuration
+## 📚 Learning Documentation
 
-### Environment Variables
+- [⚠️ DISCLAIMER](DISCLAIMER.md) - **READ FIRST** - Educational purpose and critical warnings
+- [🔧 Development Setup](docs/DEVELOPMENT.md) - Learning environment configuration
+- [🐳 Docker Learning](docs/DOCKER.md) - Containerization concepts
+- [🔐 OAuth Learning](docs/OAUTH.md) - Authentication flow understanding
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `ZOHO_CLIENT_ID` | Zoho OAuth Client ID | Required |
-| `ZOHO_CLIENT_SECRET` | Zoho OAuth Client Secret | Required |
-| `ZOHO_REFRESH_TOKEN` | Zoho OAuth Refresh Token | Required |
-| `CHECKIN_TIME` | Cron schedule for check-in | `0 9 * * 1-5` (9 AM Mon-Fri) |
-| `CHECKOUT_TIME` | Cron schedule for check-out | `30 17 * * 1-5` (5:30 PM Mon-Fri) |
-| `TIMEZONE` | Timezone for cron jobs | `Europe/Berlin` |
-| `TOKEN_FILE` | Path to store access token | `access_token.json` |
+## 🎮 Educational Exploration
+
+**For learning purposes only:**
+
+### Configuration Learning
+Study how environment variables control behavior:
+
+| Variable | Learning Purpose | Educational Default |
+|----------|------------------|-------------------|
+| `ZOHO_CLIENT_ID` | OAuth client identification | Required for API learning |
+| `ZOHO_CLIENT_SECRET` | OAuth client authentication | Secure credential handling |
+| `ZOHO_REFRESH_TOKEN` | Long-lived token management | Token lifecycle understanding |
+| `CHECKIN_TIME` | Cron schedule syntax | `0 9 * * 1-5` (learning example) |
+| `CHECKOUT_TIME` | Automation timing concepts | `30 17 * * 1-5` (educational) |
+| `TIMEZONE` | Time zone handling | `Europe/Berlin` (example) |
+
+### Code Learning Points
+- **OAuth Flow**: See `zoho_token_manager.js` for token refresh patterns
+- **API Integration**: Study `attendance_manager.js` for REST API usage
+- **Error Handling**: Examine retry mechanisms and failure scenarios
+- **Docker Patterns**: Learn multi-stage builds and security practices
+- **Cron Concepts**: Understand scheduling syntax and automation
 
 ### Cron Schedule Format
 
@@ -79,78 +122,79 @@ Examples:
 - `0 8 * * *` - 8:00 AM, every day
 - `0 18 1-15 * 1-5` - 6:00 PM, first 15 days, weekdays only
 
-## Docker Commands
+## 🔧 Educational Docker Commands
+
+**For learning container concepts:**
 
 ```bash
-# View logs
+# Study build process and layers
 docker-compose logs -f zoho-attendance
 
-# Restart service
+# Examine container lifecycle
 docker-compose restart zoho-attendance
 
-# Stop service
+# Learn about container management
 docker-compose down
 
-# Rebuild and restart
+# Practice build optimization
 docker-compose up -d --build
 ```
 
-## File Structure
+## 🏗️ Learning Architecture
 
-```
-zoho-attendance/
-├── zoho_token_manager.js    # OAuth token management
-├── attendance_manager.js    # Main attendance logic
-├── package.json            # Dependencies
-├── Dockerfile              # Docker build instructions
-├── docker-compose.yml      # Docker compose configuration
-├── .env.example           # Environment template
-├── .dockerignore          # Docker ignore rules
-├── data/                  # Persistent token storage
-└── logs/                  # Application logs (optional)
-```
+Study how the components work together:
 
-## Getting Zoho OAuth Credentials
+- **OAuth Manager** (`zoho_token_manager.js`): Token lifecycle and refresh patterns
+- **Attendance Logic** (`attendance_manager.js`): API integration and error handling  
+- **Docker Configuration**: Multi-stage builds and security practices
+- **Environment Management**: Configuration and secrets handling
+- **Cron Scheduling**: Automation timing and reliability concepts
 
-1. Go to [Zoho Developer Console](https://api-console.zoho.com/)
-2. Create a new application
-3. Generate OAuth credentials
-4. Get refresh token using OAuth flow
-5. Add credentials to `.env` file
+### Educational API Flow
 
-## Troubleshooting
+1. **Token Management**: Learn OAuth 2.0 refresh flow implementation
+2. **API Integration**: Study REST API call patterns and error handling
+3. **Scheduling**: Understand cron job concepts and timing
+4. **Containerization**: Explore Docker best practices and deployment
 
-### Check container status
-```bash
-docker-compose ps
-docker-compose logs zoho-attendance
-```
+## 🔒 Educational Security Notes
 
-### Test token manually
-```bash
-docker-compose exec zoho-attendance node -e "
-require('./zoho_token_manager').getAccessToken()
-  .then(token => console.log('Token:', token))
-  .catch(err => console.error('Error:', err.message))
-"
-```
+**Learn about security concepts:**
+- Environment variable management (never commit `.env`)
+- OAuth token lifecycle and refresh mechanisms  
+- Container security and non-root execution
+- API rate limiting and error handling
+- Credential rotation and management
 
-### Verify cron schedule
-```bash
-# Check if cron expressions are valid
-docker-compose exec zoho-attendance node -e "
-const cron = require('node-cron');
-console.log('Check-in schedule valid:', cron.validate(process.env.CHECKIN_TIME));
-console.log('Check-out schedule valid:', cron.validate(process.env.CHECKOUT_TIME));
-"
-```
+## 📝 Educational License
 
-## Security Notes
+[GPL License](LICENSE) - Free for educational use, modification, and learning!
 
-- Use Docker secrets in production
-- Token file is automatically generated and managed
-- Container runs as non-root user for security
+**Remember**: All usage should maintain educational focus and ethical boundaries.
 
-## License
+## ⚠️ Final Educational Reminder
 
-GPL
+**This project is for learning purposes only.**
+
+- ❌ **NEVER use for actual attendance automation**
+- ❌ **DO NOT deploy in workplace environments**  
+- ❌ **DO NOT use with production Zoho accounts**
+- ❌ **DO NOT encourage others to use in production**
+- ✅ **DO use for learning API development concepts**
+- ✅ **DO study OAuth 2.0 implementation patterns**
+- ✅ **DO explore Docker containerization techniques**
+- ✅ **DO understand automation concepts safely**
+
+## 🎓 Educational Support
+
+- 🐛 [Report learning issues](https://github.com/RatTrap1337/Zoho-Attendance-Browser-Extension/issues)
+- 💡 [Suggest educational improvements](https://github.com/RatTrap1337/Zoho-Attendance-Browser-Extension/issues)
+- 💬 [Educational discussions](https://github.com/RatTrap1337/Zoho-Attendance-Browser-Extension/discussions)
+
+---
+
+**Made with ❤️ for learning and education**
+
+**Professional integrity and honest attendance tracking protect everyone. Use your development skills to build legitimate, helpful tools that make workplaces better for everyone.**
+
+> 🔗 **Related**: Check out our [Browser Extension version](https://github.com/RatTrap1337/Zoho-Attendance-Browser-Extension) for learning client-side automation concepts!
