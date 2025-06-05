@@ -147,11 +147,10 @@ console.log('Check-out schedule valid:', cron.validate(process.env.CHECKOUT_TIME
 
 ## Security Notes
 
-- Never commit `.env` file to version control
 - Use Docker secrets in production
 - Token file is automatically generated and managed
 - Container runs as non-root user for security
 
 ## License
 
-MIT
+GPL
