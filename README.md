@@ -40,8 +40,8 @@ This project serves as a **learning resource** for:
 
 ```bash
 # Clone for educational study
-git clone [repository-url]
-cd zoho-attendance
+git clone https://github.com/RatTrap1337/Zoho-Attendance-Manager.git
+cd Zoho-Attendance-Manager
 
 # Copy the educational environment template
 cp .env.example .env
