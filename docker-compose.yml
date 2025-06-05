@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  zoho-attendance:
+    build: .
+    container_name: zoho-attendance-manager
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - TOKEN_FILE=/app/data/access_token.json
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data  # Persist token file
+      - ./logs:/app/logs  # Persist logs (optional)
+    # Uncomment if you need to expose a port for API/health checks
+    # ports:
+    #   - "3000:3000"
+    
+    # Optional: Set memory limits
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
+    
+    # Optional: Add logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# Optional: Create a network for multiple services
+networks:
+  default:
+    driver: bridge
